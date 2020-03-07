@@ -1,23 +1,4 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { Button, ThemeProvider } from "react-native-elements";
-import Restaurant from "./components/screens/Restaurants";
-
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <Button title="Hey!"></Button>
-      <Restaurant />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
-  }
-});
+const STORYBOOK_START = true;
+export default STORYBOOK_START
+  ? require("./storybook").default
+  : require("./components/App/App.tsx").default;
