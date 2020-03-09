@@ -4,17 +4,17 @@
 // https://github.com/elderfo/react-native-storybook-loader.git
 
 function loadStories() {
-	require('../components/screens/MyAccount/MyAccount.stories');
-	require('../components/screens/Restaurants/Restaurants.stories');
-	require('../components/screens/Search/Search.stories');
-	require('../components/screens/TopRestaurants/TopRestaurants.stories');
+	require('../src/components/screens/MyAccount/MyAccount.stories');
+	require('../src/components/screens/Restaurants/Restaurants.stories');
+	require('../src/components/screens/Search/Search.stories');
+	require('../src/components/screens/TopRestaurants/TopRestaurants.stories');
 }
 
 const stories = [
-	'../components/screens/MyAccount/MyAccount.stories',
-	'../components/screens/Restaurants/Restaurants.stories',
-	'../components/screens/Search/Search.stories',
-	'../components/screens/TopRestaurants/TopRestaurants.stories'
+	'../src/components/screens/MyAccount/MyAccount.stories',
+	'../src/components/screens/Restaurants/Restaurants.stories',
+	'../src/components/screens/Search/Search.stories',
+	'../src/components/screens/TopRestaurants/TopRestaurants.stories'
 ];
 
 module.exports = {

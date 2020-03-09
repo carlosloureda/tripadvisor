@@ -30,3 +30,5 @@ const StorybookUIRoot = getStorybookUI({
 - To load "dinamically" the stories from the servers I had to install this library, now Storybook works as I want
 
 ## Routing
+
+## Login - Firebase
