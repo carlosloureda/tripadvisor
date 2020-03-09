@@ -1,15 +1,14 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { Button, ThemeProvider } from "react-native-elements";
-import Restaurant from "../screens/Restaurants";
+import { StyleSheet } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+
+import MainNavigation from "../navigations/Natigation";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <Button title="Hey!"></Button>
-      <Restaurant />
-    </View>
+    <NavigationContainer>
+      <MainNavigation />
+    </NavigationContainer>
   );
 }
 
