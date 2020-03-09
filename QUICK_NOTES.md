@@ -32,3 +32,6 @@ const StorybookUIRoot = getStorybookUI({
 ## Routing
 
 ## Login - Firebase
+
+- Added firebase plugin
+- Added react-native-dotenv
