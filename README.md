@@ -17,7 +17,30 @@ To run this project you need to
 git clone https://github.com/carlosloureda/tripadvisor
 cd tripadvisor
 yarn install
-yarn dev
+# Make sure that App.tsx has const STORYBOOK_START = false; If true it will load storybook
+yarn start
+```
+
+### Storybook
+
+If you want to run storybook:
+
+- Go to `./App.tsx` and set the following statement to true:
+
+```
+const STORYBOOK_START = true;
+```
+
+- Run storybook server:
+
+```
+yarn run storybook
+```
+
+- Start app (now it will load the storybook component):
+
+```
+yarn start
 ```
 
 ## About
