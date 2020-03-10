@@ -35,3 +35,6 @@ const StorybookUIRoot = getStorybookUI({
 
 - Added firebase plugin
 - Added react-native-dotenv
+
+- Added basic registration.
+  TODO: Need to implement email validation and dinamic links

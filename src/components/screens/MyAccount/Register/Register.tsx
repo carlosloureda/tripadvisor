@@ -10,12 +10,51 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import { Input, Icon, Button } from "react-native-elements";
 import { validateEmail } from "../../../../utils/validators";
 import useRegisterUser from "./Hooks/useRegisterUser";
+import firebase from "../../../../api/firebase";
+
+// TODO: this needs to be done with the app finished
+const checkUserEmail = email => {
+  return;
+  // Send validation email to the user
+  var actionCodeSettings = {
+    // URL you want to redirect back to. The domain (www.example.com) for this
+    // URL must be whitelisted in the Firebase Console.
+    //   url: "https://www.example.com/finishSignUp?cartId=1234",
+    url: "http://localhost",
+    // This must be true.
+    handleCodeInApp: true
+    //   iOS: {
+    //     bundleId: "es.carlosloureda.tripadvisor-ios"
+    //   },
+    //   android: {
+    //     packageName: "es.carlosloureda.tripadvisor-android",
+    //     installApp: true,
+    //     minimumVersion: "12"
+    //   }
+    //   dynamicLinkDomain: "example.page.link"
+  };
+  firebase
+    .auth()
+    .sendSignInLinkToEmail(email, actionCodeSettings)
+    .then(function() {
+      // The link was successfully sent. Inform the user.
+      // Save the email locally so you don't need to ask the user for it again
+      // if they open the link on the same device.
+      //TODO:
+      // window.localStorage.setItem("emailForSignIn", email);
+      console.log("email successfully sent");
+    })
+    .catch(function(error) {
+      // Some error occurred, you can inspect the code: error.code
+      console.log("ERRORACO: ", error);
+    });
+};
 
 const Register = () => {
   const [showPassword, setShowPassword] = React.useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = React.useState(false);
 
-  const onRegister = (): void => {
+  const onRegister = async (): void => {
     const errors = [];
     // Declared on next function
     if (email && password && passwordRepeat) {
@@ -43,6 +82,19 @@ const Register = () => {
       );
     } else {
       console.log("User registered");
+      try {
+        //   Register User
+        const registerResponse = await firebase
+          .auth()
+          .createUserWithEmailAndPassword(email, password);
+        //steps after logging in
+        console.log("User registered!: ", registerResponse);
+        console.log(registerResponse.user.uid);
+        checkUserEmail(email); // Not implemented
+      } catch (error) {
+        console.error("An error occurred: ", error);
+        //error handling
+      }
     }
   };
   const {
