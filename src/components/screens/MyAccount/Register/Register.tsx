@@ -1,11 +1,55 @@
-import React from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  NativeEventEmitter
+} from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { Input, Icon, Button } from "react-native-elements";
+import { validateEmail } from "../../../../utils/validators";
+import useRegisterUser from "./Hooks/useRegisterUser";
 
 const Register = () => {
   const [showPassword, setShowPassword] = React.useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = React.useState(false);
+
+  const onRegister = (): void => {
+    const errors = [];
+    // Declared on next function
+    if (email && password && passwordRepeat) {
+      if (!validateEmail(email)) {
+        errors.push({
+          field: "email",
+          message: "Email is not a good email"
+        });
+      }
+      if (password !== passwordRepeat) {
+        errors.push({
+          field: "password",
+          message: "Passwords are different"
+        });
+      }
+    } else {
+      errors.push({
+        field: "all",
+        message: "All fields are required"
+      });
+    }
+    if (errors && errors.length) {
+      errors.forEach(error =>
+        console.log(`${error.field} -  ${error.message}`)
+      );
+    } else {
+      console.log("User registered");
+    }
+  };
+  const {
+    inputs: { email, password, passwordRepeat },
+    handleInputChange,
+    handleSubmit
+  } = useRegisterUser(onRegister);
 
   return (
     <KeyboardAwareScrollView>
@@ -18,7 +62,7 @@ const Register = () => {
         <Input
           placeholder="Email address"
           containerStyle={styles.input}
-          onChange={() => console.log("Email updated")}
+          onChange={e => handleInputChange(e, "email")}
           rightIcon={
             <Icon
               type="material-community"
@@ -31,7 +75,7 @@ const Register = () => {
           placeholder="Password"
           containerStyle={styles.input}
           secureTextEntry={showPassword ? false : true}
-          onChange={() => console.log("password updated")}
+          onChange={e => handleInputChange(e, "password")}
           rightIcon={
             <Icon
               type="material-community"
@@ -47,7 +91,7 @@ const Register = () => {
           placeholder="Repeate password"
           containerStyle={styles.input}
           secureTextEntry={showRepeatPassword ? false : true}
-          onChange={() => console.log("repeat password updated")}
+          onChange={e => handleInputChange(e, "passwordRepeat")}
           rightIcon={
             <Icon
               type="material-community"
@@ -63,6 +107,8 @@ const Register = () => {
           title="Join!"
           containerStyle={styles.submitBtnContainer}
           buttonStyle={styles.submitBtn}
+          onPress={handleSubmit}
+          disabled={email && password && passwordRepeat ? false : true}
         />
       </View>
     </KeyboardAwareScrollView>
@@ -70,7 +116,6 @@ const Register = () => {
 };
 
 export default Register;
-
 const styles = StyleSheet.create({
   logo: {
     width: "100%",
