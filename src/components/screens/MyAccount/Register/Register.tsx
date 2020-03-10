@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { Input, Icon, Button } from "react-native-elements";
+import Toast from "react-native-tiny-toast";
 import { validateEmail } from "../../../../utils/validators";
 import useRegisterUser from "./Hooks/useRegisterUser";
 import firebase from "../../../../api/firebase";
@@ -54,7 +55,7 @@ const Register = () => {
   const [showPassword, setShowPassword] = React.useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = React.useState(false);
 
-  const onRegister = async (): void => {
+  const onRegister = async () => {
     const errors = [];
     // Declared on next function
     if (email && password && passwordRepeat) {
@@ -78,8 +79,13 @@ const Register = () => {
     }
     if (errors && errors.length) {
       errors.forEach(error =>
-        console.log(`${error.field} -  ${error.message}`)
+        console.log(`-${error.field} -  ${error.message}`)
       );
+      const errorMessage = errors.map(error => error.message).join("-");
+
+      Toast.show(errorMessage, {
+        position: Toast.position.CENTER
+      });
     } else {
       console.log("User registered");
       try {
