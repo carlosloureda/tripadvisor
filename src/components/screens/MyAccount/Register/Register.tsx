@@ -9,10 +9,12 @@ import {
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { Input, Icon, Button } from "react-native-elements";
 import Toast from "react-native-tiny-toast";
+import { withNavigation } from "@react-navigation/compat";
+
+import firebase from "../../../../api/firebase";
 import { validateEmail } from "../../../../utils/validators";
 import useRegisterUser from "./Hooks/useRegisterUser";
-import firebase from "../../../../api/firebase";
-
+import Loading from "../../../Loaders/Loading";
 // TODO: this needs to be done with the app finished
 const checkUserEmail = email => {
   return;
@@ -51,11 +53,13 @@ const checkUserEmail = email => {
     });
 };
 
-const Register = () => {
+const Register = ({ navigation }) => {
   const [showPassword, setShowPassword] = React.useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = React.useState(false);
+  const [isVisibleLoading, setIsVisibleLoading] = React.useState(false);
 
   const onRegister = async () => {
+    setIsVisibleLoading(true);
     const errors = [];
     // Declared on next function
     if (email && password && passwordRepeat) {
@@ -81,10 +85,11 @@ const Register = () => {
       errors.forEach(error =>
         console.log(`-${error.field} -  ${error.message}`)
       );
-      const errorMessage = errors.map(error => error.message).join("-");
+      const errorMessage = errors.map(error => error.message).join("\n");
 
       Toast.show(errorMessage, {
-        position: Toast.position.CENTER
+        position: Toast.position.CENTER,
+        textColor: "red"
       });
     } else {
       console.log("User registered");
@@ -96,12 +101,20 @@ const Register = () => {
         //steps after logging in
         console.log("User registered!: ", registerResponse);
         console.log(registerResponse.user.uid);
-        checkUserEmail(email); // Not implemented
+        // checkUserEmail(email); // Not implemented
+        console.log("navigate to");
+        navigation.navigate("Account");
+        console.log("after navigate to");
       } catch (error) {
-        console.error("An error occurred: ", error);
+        // error.code == "auth/email-already-in-use"
+        // console.error("An error occurred: ", error.message);
+        Toast.show(error.message, {
+          position: Toast.position.CENTER
+        });
         //error handling
       }
     }
+    setIsVisibleLoading(false);
   };
   const {
     inputs: { email, password, passwordRepeat },
@@ -168,12 +181,14 @@ const Register = () => {
           onPress={handleSubmit}
           disabled={email && password && passwordRepeat ? false : true}
         />
+        <Loading isVisible={isVisibleLoading} text="Creating account ..." />
       </View>
     </KeyboardAwareScrollView>
   );
 };
 
-export default Register;
+export default withNavigation(Register);
+
 const styles = StyleSheet.create({
   logo: {
     width: "100%",
