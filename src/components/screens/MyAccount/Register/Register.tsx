@@ -57,8 +57,6 @@ const checkUserEmail = email => {
 };
 
 const Register = ({ navigation }) => {
-  const [showPassword, setShowPassword] = React.useState(false);
-  const [showRepeatPassword, setShowRepeatPassword] = React.useState(false);
   const [isVisibleLoading, setIsVisibleLoading] = React.useState(false);
 
   const onRegister = async () => {

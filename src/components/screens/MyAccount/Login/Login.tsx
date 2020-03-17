@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, ScrollView, Image } from "react-native";
 import { Divider } from "react-native-elements";
 import LoginForm from "./LoginForm/LoginForm";
 import { withNavigation } from "@react-navigation/compat";
+
 import colors from "../../../../styles/colors";
 
 const CreateAccount = ({ onPressHandler }) => {
