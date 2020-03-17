@@ -1,8 +1,10 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-
+import firebaseApp from "../../api/firebase";
 import MainNavigation from "../navigations/Natigation";
+
+import { FIREBASE_CONFIG } from "react-native-dotenv";
 
 export default function App() {
   return (

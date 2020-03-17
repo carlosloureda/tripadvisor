@@ -11,6 +11,23 @@ This is a mini clone project on Tripadvisor to show students a complete React Na
 
 ## Installation
 
+### CONFIGURATION
+
+Create a .env file in the root of your project with the FIREBASE configuration (you need to creata a firebase app and get the config params):
+
+```
+FIREBASE_CONFIG = {
+    apiKey: <apiKey>,
+    authDomain: <authDomain>,
+    databaseURL: <databaseURL>,
+    projectId: <projectId>,
+    storageBucket: <storageBucket>,
+    messagingSenderId: <messagingSenderId>,
+    appId: <appId>,
+    measurementId: <measurementId>
+}
+```
+
 To run this project you need to
 
 ```sh

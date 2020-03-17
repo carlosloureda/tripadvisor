@@ -1,24 +1,22 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
 
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
-import Restaurants from "../screens/Restaurants";
-import MyAccount from "../screens/MyAccount";
-import Search from "../screens/Search";
-import TopRestaurants from "../screens/TopRestaurants";
-const Tab = createBottomTabNavigator();
+import RestaurantsStackNavigator from "./StackNavigations/RestaurantsStackNavigator";
+import TopRestaurantsStackNavigator from "./StackNavigations/TopRestaurantsStackNavigator";
+import SearchStackNavigator from "./StackNavigations/SearchStackNavigator";
+import AccountStackNavigator from "./StackNavigations/AccountStackNavigator";
 
-// <Stack.Navigator>
-//     <Stack.Screen name="Top 5" component={}/>
-// </Stack.Navigator>
+const Tab = createBottomTabNavigator();
 
 function MainNavigation() {
   return (
     <Tab.Navigator>
       <Tab.Screen
         name="Restaurants"
-        component={Restaurants}
+        component={RestaurantsStackNavigator}
         options={{
           tabBarLabel: "Restaurants",
           tabBarIcon: ({ color, size }) => (
@@ -28,7 +26,7 @@ function MainNavigation() {
       />
       <Tab.Screen
         name="TopRestaurants"
-        component={TopRestaurants}
+        component={TopRestaurantsStackNavigator}
         options={{
           tabBarLabel: "Top",
           tabBarIcon: ({ color, size }) => (
@@ -38,7 +36,7 @@ function MainNavigation() {
       />
       <Tab.Screen
         name="Search"
-        component={Search}
+        component={SearchStackNavigator}
         options={{
           tabBarLabel: "Search",
           tabBarIcon: ({ color, size }) => (
@@ -48,7 +46,7 @@ function MainNavigation() {
       />
       <Tab.Screen
         name="MyAccount"
-        component={MyAccount}
+        component={AccountStackNavigator}
         options={{
           tabBarLabel: "Account",
           tabBarIcon: ({ color, size }) => (

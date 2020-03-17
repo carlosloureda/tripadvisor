@@ -30,3 +30,11 @@ const StorybookUIRoot = getStorybookUI({
 - To load "dinamically" the stories from the servers I had to install this library, now Storybook works as I want
 
 ## Routing
+
+## Login - Firebase
+
+- Added firebase plugin
+- Added react-native-dotenv
+
+- Added basic registration.
+  TODO: Need to implement email validation and dinamic links
