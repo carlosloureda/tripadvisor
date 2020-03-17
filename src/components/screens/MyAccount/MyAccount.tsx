@@ -9,7 +9,6 @@ import GuestUser from "./GuestUser";
 const MyAccount = () => {
   const [login, setLogin] = React.useState(null);
 
-  console.log("on MyAccount");
   React.useEffect(() => {
     firebase.auth().onAuthStateChanged(user => {
       setLogin(user ? true : false);

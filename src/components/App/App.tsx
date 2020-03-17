@@ -7,8 +7,6 @@ import MainNavigation from "../navigations/Natigation";
 import { FIREBASE_CONFIG } from "react-native-dotenv";
 
 export default function App() {
-  // console.log("hi!: ", firebaseApp);
-  // console.log("firebaseConfig: ", FIREBASE_CONFIG);
   return (
     <NavigationContainer>
       <MainNavigation />

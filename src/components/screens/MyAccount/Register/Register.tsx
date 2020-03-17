@@ -92,19 +92,14 @@ const Register = ({ navigation }) => {
         textColor: "red"
       });
     } else {
-      console.log("User registered");
       try {
         //   Register User
         const registerResponse = await firebase
           .auth()
           .createUserWithEmailAndPassword(email, password);
         //steps after logging in
-        console.log("User registered!: ", registerResponse);
-        console.log(registerResponse.user.uid);
         // checkUserEmail(email); // Not implemented
-        console.log("navigate to");
         navigation.navigate("Account");
-        console.log("after navigate to");
       } catch (error) {
         // error.code == "auth/email-already-in-use"
         // console.error("An error occurred: ", error.message);

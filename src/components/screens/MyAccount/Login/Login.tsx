@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, ScrollView, Image } from "react-native";
 import { Divider } from "react-native-elements";
+import LoginForm from "./LoginForm/LoginForm";
 import { withNavigation } from "@react-navigation/compat";
 
 const CreateAccount = ({ onPressHandler }) => {
@@ -27,7 +28,7 @@ const Login = ({ navigation }) => {
         resizeMode="contain"
       />
       <View style={styles.view}>
-        <Text>Form login ... </Text>
+        <LoginForm />
         <CreateAccount onPressHandler={goToRegister} />
       </View>
       <Divider style={styles.divider} />
