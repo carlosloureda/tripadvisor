@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Text, ActivityIndicator } from "react-native";
 import { Overlay } from "react-native-elements";
+import colors from "../../../styles/colors";
 
 const Loading = ({ isVisible: boolean, text = "Loading ..." }) => {
   return (
@@ -11,7 +12,7 @@ const Loading = ({ isVisible: boolean, text = "Loading ..." }) => {
       overlayStyle={styles.overlay}
     >
       <View style={styles.view}>
-        <ActivityIndicator size="large" color="#00a680" />
+        <ActivityIndicator size="large" color={colors.green} />
         {text && <Text style={styles.text}>{text}</Text>}
       </View>
     </Overlay>
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
     height: 100,
     width: 200,
     backgroundColor: "#fff",
-    borderColor: "#00a680",
+    borderColor: colors.green,
     borderWidth: 2,
     borderRadius: 10
   },
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   text: {
-    color: "#00a680",
+    color: colors.green,
     textTransform: "uppercase",
     marginTop: 10
   }

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
 import { Input, Icon, Button } from "react-native-elements";
+import PasswordInput from "../../../../common/PasswordInput";
+import colors from "../../../../../styles/colors";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -21,21 +23,9 @@ const LoginForm = () => {
           />
         }
       />
-      <Input
-        placeholder="Password"
-        containerStyle={styles.inputForm}
-        secureTextEntry={showPassword ? false : true}
+      <PasswordInput
+        placeholder={"Password"}
         onChange={() => console.log("pass updated")}
-        rightIcon={
-          <Icon
-            type="material-community"
-            name="eye-outline"
-            iconStyle={
-              showPassword ? styles.inputIconSelected : styles.inputIcon
-            }
-            onPress={() => setShowPassword(!showPassword)}
-          />
-        }
       />
       <Button
         title="Login"
@@ -74,6 +64,6 @@ const styles = StyleSheet.create({
     width: "95%"
   },
   btnLogin: {
-    backgroundColor: "#00a680"
+    backgroundColor: colors.green
   }
 });

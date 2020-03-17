@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, ScrollView, Image } from "react-native";
 import { Divider } from "react-native-elements";
 import LoginForm from "./LoginForm/LoginForm";
 import { withNavigation } from "@react-navigation/compat";
+import colors from "../../../../styles/colors";
 
 const CreateAccount = ({ onPressHandler }) => {
   return (
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
     marginLeft: 40
   },
   divider: {
-    backgroundColor: "#00a680",
+    backgroundColor: colors.green,
     margin: 40
   },
   textRegister: {
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
     marginRight: 10
   },
   btnRegister: {
-    color: "#00a680",
+    color: colors.green,
     margin: 40,
     fontWeight: "bold"
   }

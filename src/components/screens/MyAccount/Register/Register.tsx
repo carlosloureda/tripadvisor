@@ -15,6 +15,9 @@ import firebase from "../../../../api/firebase";
 import { validateEmail } from "../../../../utils/validators";
 import useRegisterUser from "./Hooks/useRegisterUser";
 import Loading from "../../../Loaders/Loading";
+import colors from "../../../../styles/colors";
+import PasswordInput from "../../../common";
+
 // TODO: this needs to be done with the app finished
 const checkUserEmail = email => {
   return;
@@ -137,37 +140,13 @@ const Register = ({ navigation }) => {
             />
           }
         />
-        <Input
+        <PasswordInput
           placeholder="Password"
-          containerStyle={styles.input}
-          secureTextEntry={showPassword ? false : true}
-          onChange={e => handleInputChange(e, "password")}
-          rightIcon={
-            <Icon
-              type="material-community"
-              name={showRepeatPassword ? "eye-off-outline" : "eye-outline"}
-              iconStyle={
-                showPassword ? styles.inputIconSelected : styles.inputIcon
-              }
-              onPress={() => setShowPassword(!showPassword)}
-            />
-          }
+          onChange={(e: any) => handleInputChange(e, "password")}
         />
-        <Input
+        <PasswordInput
           placeholder="Repeate password"
-          containerStyle={styles.input}
-          secureTextEntry={showRepeatPassword ? false : true}
-          onChange={e => handleInputChange(e, "passwordRepeat")}
-          rightIcon={
-            <Icon
-              type="material-community"
-              name={showRepeatPassword ? "eye-off-outline" : "eye-outline"}
-              iconStyle={
-                showRepeatPassword ? styles.inputIconSelected : styles.inputIcon
-              }
-              onPress={() => setShowRepeatPassword(!showRepeatPassword)}
-            />
-          }
+          onChange={(e: any) => handleInputChange(e, "passwordRepeat")}
         />
         <Button
           title="Join!"
@@ -214,6 +193,6 @@ const styles = StyleSheet.create({
     alignSelf: "center"
   },
   submitBtn: {
-    backgroundColor: "#00a680"
+    backgroundColor: colors.green
   }
 });

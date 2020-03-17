@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Text, ScrollView, View, Image } from "react-native";
 import { Button } from "react-native-elements";
 import { withNavigation } from "@react-navigation/compat";
+import colors from "../../../../styles/colors";
 
 const GuestUser = ({ navigation }) => {
   const navigateToLogin = () => {
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   btn: {
-    backgroundColor: "#00a680"
+    backgroundColor: colors.green
   },
   btnContainer: {
     width: "70%"
