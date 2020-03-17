@@ -111,6 +111,7 @@ const Register = ({ navigation }) => {
         });
         //error handling
       }
+      setIsVisibleLoading(false);
     }
     setIsVisibleLoading(false);
   };
