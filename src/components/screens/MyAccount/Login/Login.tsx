@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, ScrollView, Image } from "react-native";
 import { Divider } from "react-native-elements";
 import LoginForm from "./LoginForm/LoginForm";
 import { withNavigation } from "@react-navigation/compat";
-
+import LoginFacebook from "./SocialLogin/LoginFacebook";
 import colors from "../../../../styles/colors";
 
 const CreateAccount = ({ onPressHandler }) => {
@@ -35,7 +35,7 @@ const Login = ({ navigation }) => {
       </View>
       <Divider style={styles.divider} />
       <View style={styles.view}>
-        <Text>Login Facebook ... </Text>
+        <LoginFacebook />
       </View>
     </ScrollView>
   );
@@ -46,8 +46,8 @@ export default withNavigation(Login);
 const styles = StyleSheet.create({
   logo: {
     width: "100%",
-    height: 150,
-    marginTop: 20
+    height: 130,
+    marginTop: 10
   },
   view: {
     marginRight: 40,
@@ -55,10 +55,10 @@ const styles = StyleSheet.create({
   },
   divider: {
     backgroundColor: colors.green,
-    margin: 40
+    margin: 20
   },
   textRegister: {
-    marginTop: 15,
+    marginTop: 10,
     marginLeft: 10,
     marginRight: 10
   },
